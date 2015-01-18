@@ -41,13 +41,13 @@
             $sql = "SELECT * FROM solderhelper.new";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
-                echo "<table class='table' data-p='" . $password . "' data-u='" . $user . "'><tr><th>#</th><th>Filename</th><th>Minecraft Version</th><th>Mod Version</th><th>MD5</th><th>Action</th></tr>";
+                echo "<table class='table' data-p='" . $password . "' data-u='" . $user . "'><tr><th>#</th><th>Filename</th><th>Modname</th><th>Modid</th><th>Minecraft Version</th><th>Mod Version</th><th>MD5</th><th>Action</th></tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr data-id='" . $row["id"] . "'><td>" . $row["id"] . "</td><td>" . $row["filename"] . "</td><td>" . $row["mcversion"] . "</td><td>" . $row["modversion"] . "</td><td>" . $row["md5"] . "</td><td><button type='button' class='btn btn-success'>Accept</button><button type='button' class='btn btn-danger'>Remove</button></td></tr>";
+                    echo "<tr data-id='" . $row["id"] . "'><td>" . $row["id"] . "</td><td>" . $row["filename"] . "</td><td>" . $row["modname"] . "</td><td>" . $row["modid"] . "</td><td>" . $row["mcversion"] . "</td><td>" . $row["modversion"] . "</td><td>" . $row["md5"] . "</td><td><button type='button' class='btn btn-success'>Accept</button><button type='button' class='btn btn-danger'>Remove</button></td></tr>";
                 }
                 echo "</table>";
             } else {
-                echo "done";
+                echo "<p>Nothing to show here</p>";
             }
         } else {
             die("You are a fool!!");
