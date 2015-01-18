@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - solderhelper@localhost" uuid="eda4f1d5-e741-41ff-a9b4-36767099abf2">
+      <secret-storage>master_key</secret-storage>
+      <user-name>rasmus</user-name>
+      <schema-pattern>solderhelper.*</schema-pattern>
+      <default-schemas>solderhelper.*</default-schemas>
+    </data-source>
+  </component>
+</project>
