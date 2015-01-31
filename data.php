@@ -38,7 +38,7 @@
             $dbname = "solderhelper";
             $con = new mysqli($host, $user, $password)
             or error($con->error);
-            $sql = "SELECT * FROM solderhelper.new";
+            $sql = "SELECT * FROM solderhelper.new;";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
                 echo "<table class='table' data-p='" . $password . "' data-u='" . $user . "'><tr><th>#</th><th>Filename</th><th>Modname</th><th>Modid</th><th>Minecraft Version</th><th>Mod Version</th><th>MD5</th><th>Action</th></tr>";

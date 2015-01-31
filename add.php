@@ -17,5 +17,15 @@ if($con->query($sql) === TRUE) {
         echo "Error deleting old records: " . $sql . "\n" . $con->error;
     }
 } else {
-    echo "Error inserting new record: " . $sql . "\n" . $con->error;
+    if($con->errno === 1062) {
+        $sql = "DELETE FROM solderhelper.new WHERE id LIKE '$id';";
+        if($con->query($sql) === TRUE) {
+            echo "success";
+        } else {
+            echo "Error deleting duplicate records: " . $sql . "\n" . $con->error;
+        }
+    } else {
+        echo "Error inserting new record: " . $sql . "\n" . $con->error . "\n";
+        echo $con->errno;
+    }
 }
