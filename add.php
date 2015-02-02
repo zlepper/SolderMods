@@ -6,8 +6,8 @@ $p = $_GET["p"];
 $con = new mysqli("localhost", $u, $p)
 or die ('Could not connect to the database server' . $con->connect_error);
 
-$sql = "INSERT INTO helpersolder.mods(filename, mcversion, modversion, md5, modname, modid)
-	SELECT filename, mcversion, modversion, md5, modname, modid FROM solderhelper.new
+$sql = "INSERT INTO helpersolder.mods(filename, mcversion, modversion, md5, modname, modid, author)
+	SELECT filename, mcversion, modversion, md5, modname, modid, author FROM solderhelper.new
     WHERE id LIKE '$id';";
 if($con->query($sql) === TRUE) {
     $sql = "DELETE FROM solderhelper.new WHERE id LIKE '$id';";
