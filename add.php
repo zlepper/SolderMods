@@ -18,11 +18,27 @@ if($con->query($sql) === TRUE) {
     }
 } else {
     if($con->errno === 1062) {
-        $sql = "DELETE FROM solderhelper.new WHERE id LIKE '$id';";
-        if($con->query($sql) === TRUE) {
-            echo "success";
+        $sql = "SELECT author FROM solderhelper.new WHERE id LIKE '$id';";
+        $result = $con->query($sql);
+        $author = "";
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $author = $row["author"];
+        }
+        if($author != "") {
+            $sql = "UPDATE solderhelper.mods SET author = '$author' WHERE id LIKE $id;";
+            if ($con->query($sql) === TRUE) {
+                echo "success";
+            } else {
+                echo "Error updating duplicate records: " . $sql . "\n" . $con->error;
+            }
         } else {
-            echo "Error deleting duplicate records: " . $sql . "\n" . $con->error;
+            $sql = "DELETE FROM solderhelper.new WHERE id LIKE '$id';";
+            if($con->query($sql) === TRUE) {
+                echo "success";
+            } else {
+                echo "Error deleting duplicate records: " . $sql . "\n" . $con->error;
+            }
         }
     } else {
         echo "Error inserting new record: " . $sql . "\n" . $con->error . "\n";
